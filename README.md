@@ -6,11 +6,18 @@ https://en.wikipedia.org/wiki/Specification_by_example
 
 # Uses SpecFlow from http://specflow.org/
 1. Install Visual Studio plugin for Specflow
-	Open Extensions and Updates
-	Search for Specflow
-	Install Specflow for Visual Studio 2017
+	* Open Extensions and Updates
+	* Search for Specflow
+	* Install Specflow for Visual Studio 2017
 2.	Add nuget package for Specflow
 3.  Add nuget package for Specflow and your test framework of choice (Specflow.NUnit)
 
 # Key concepts
 ## Feature
+Name and description for a group of scenarios.
+
+## Scenario
+A test scenario for a feature
+
+## Epic
+Group a set of features by assigning them a tag like @epic:My_epic_feature_set
