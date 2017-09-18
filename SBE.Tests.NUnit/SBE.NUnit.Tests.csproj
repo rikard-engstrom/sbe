@@ -8,8 +8,8 @@
     <ProjectGuid>{5D6B6711-4D1F-479A-B7E7-4AEDD938F33A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SBE.Tests.NUnit</RootNamespace>
-    <AssemblyName>SBE.Tests.NUnit</AssemblyName>
+    <RootNamespace>SBE._NUnit.Tests</RootNamespace>
+    <AssemblyName>SBE._NUnit.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -52,11 +52,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmptyUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sample.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sample.feature</DependentUpon>
+    </Compile>
+    <Compile Include="SampleSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Sample.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Sample.feature.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SBE.NUnit\SBE.NUnit.csproj">
+      <Project>{e68f658a-1051-4dba-8322-76b55cb22fa5}</Project>
+      <Name>SBE.NUnit</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
