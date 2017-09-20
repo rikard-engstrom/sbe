@@ -1,0 +1,60 @@
+[
+  {
+    "Title": "Missing steps",
+    "Tags": [
+      "current"
+    ],
+    "Success": false,
+    "Scenarios": [
+      {
+        "Title": "Scenario without generated steps",
+        "Success": false,
+        "Outcome": "Inconclusive",
+        "Tags": []
+      }
+    ]
+  },
+  {
+    "Title": "Name your arguments",
+    "Tags": [],
+    "Success": false,
+    "Scenarios": [
+      {
+        "Title": "Add two numbers",
+        "Success": false,
+        "Outcome": "Inconclusive",
+        "Tags": []
+      }
+    ]
+  },
+  {
+    "Title": "Sample of a not implemented feature",
+    "Tags": [],
+    "Success": false,
+    "Scenarios": [
+      {
+        "Title": "Add two numbers",
+        "Success": false,
+        "Outcome": "Inconclusive",
+        "Tags": [
+          "mytag"
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Using table as object in scenario",
+    "Tags": [
+      "sample"
+    ],
+    "Success": false,
+    "Scenarios": [
+      {
+        "Title": "Add two numbers",
+        "Success": false,
+        "Outcome": "Inconclusive",
+        "Tags": []
+      }
+    ]
+  }
+]

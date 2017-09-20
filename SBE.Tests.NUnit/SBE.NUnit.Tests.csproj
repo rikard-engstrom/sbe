@@ -54,25 +54,59 @@
   <ItemGroup>
     <Compile Include="EmptyUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sample.feature.cs">
+    <Compile Include="Samples\ArgumentsSteps.cs" />
+    <Compile Include="Samples\MissingSteps.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Sample.feature</DependentUpon>
+      <DependentUpon>MissingSteps.feature</DependentUpon>
     </Compile>
-    <Compile Include="SampleSteps.cs" />
+    <Compile Include="Samples\NotImplemented.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotImplemented.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\NotImplementedSteps.cs" />
+    <Compile Include="Samples\Arguments.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Arguments.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\TableObjects.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TableObjects.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\TableObjectsSteps.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Sample.feature">
+    <None Include="Samples\MissingSteps.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Sample.feature.cs</LastGenOutput>
+      <LastGenOutput>MissingSteps.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Samples\NotImplemented.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>NotImplemented.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Samples\Arguments.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Arguments.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Samples\TableObjects.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TableObjects.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SBE.Core\SBE.Core.csproj">
+      <Project>{19f3bab8-247b-47ed-9e13-fb43164e609a}</Project>
+      <Name>SBE.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SBE.NUnit\SBE.NUnit.csproj">
       <Project>{e68f658a-1051-4dba-8322-76b55cb22fa5}</Project>
       <Name>SBE.NUnit</Name>

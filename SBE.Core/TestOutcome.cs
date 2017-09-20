@@ -1,4 +1,4 @@
-﻿namespace SBE.Core.Models
+﻿namespace SBE.Core
 {
     public enum TestOutcome
     {

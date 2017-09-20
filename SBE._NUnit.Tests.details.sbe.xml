@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<features>
+  <feature scenarioCount="1" scenarioSuccessCount="0" success="False">
+    <title><![CDATA[Missing steps]]></title>
+    <featureText><![CDATA[@current
+Feature: Missing steps
+	This feature has no implemented steps
+
+Scenario: Scenario without generated steps
+	Given I have a scenario
+	And I it is not implemented
+	When the tests are not implemented
+	Then the outcome should be inconclusive]]></featureText>
+    <tags>
+      <tag>current</tag>
+    </tags>
+    <scenarios>
+      <scenario success="False" outcome="Inconclusive">
+        <title><![CDATA[Scenario without generated steps]]></title>
+      </scenario>
+    </scenarios>
+  </feature>
+  <feature scenarioCount="1" scenarioSuccessCount="0" success="False">
+    <title><![CDATA[Name your arguments]]></title>
+    <featureText><![CDATA[Feature: Name your arguments
+	In order to produce readable documentation scenarios with arguments should be renderd with nice names
+
+Scenario: Add two numbers
+	Given I have entered 50 into the calculator
+	And I have entered 70 into the calculator
+	When I press add
+	Then the result should be 120 on the screen
+]]></featureText>
+    <scenarios>
+      <scenario success="False" outcome="Inconclusive">
+        <title><![CDATA[Add two numbers]]></title>
+      </scenario>
+    </scenarios>
+  </feature>
+  <feature scenarioCount="1" scenarioSuccessCount="0" success="False">
+    <title><![CDATA[Sample of a not implemented feature]]></title>
+    <featureText><![CDATA[Feature: Sample of a not implemented feature
+	In order to avoid silly mistakes
+	As a math idiot
+	I want to be told the sum of two numbers
+
+@mytag
+Scenario: Add two numbers
+	Given I have entered 50 into the calculator
+	And I have entered 70 into the calculator
+	When I press add
+	Then the result should be 120 on the screen]]></featureText>
+    <scenarios>
+      <scenario success="False" outcome="Inconclusive">
+        <title><![CDATA[Add two numbers]]></title>
+        <tags>
+          <tag>mytag</tag>
+        </tags>
+      </scenario>
+    </scenarios>
+  </feature>
+  <feature scenarioCount="1" scenarioSuccessCount="0" success="False">
+    <title><![CDATA[Using table as object in scenario]]></title>
+    <featureText><![CDATA[@sample
+Feature: Using table as object in scenario
+
+Scenario: Add two numbers
+	Given I have entered into the calculator
+	| name | email |
+	|      |       |
+	When I press add
+	Then the result should be on the screen
+	| name | email |
+	|      |       |
+]]></featureText>
+    <tags>
+      <tag>sample</tag>
+    </tags>
+    <scenarios>
+      <scenario success="False" outcome="Inconclusive">
+        <title><![CDATA[Add two numbers]]></title>
+      </scenario>
+    </scenarios>
+  </feature>
+</features>

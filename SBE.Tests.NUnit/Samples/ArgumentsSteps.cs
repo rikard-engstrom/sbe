@@ -1,26 +1,31 @@
-﻿using TechTalk.SpecFlow;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TechTalk.SpecFlow;
 
-namespace SBE.Tests.NUnit
+namespace SBE._NUnit.Tests.Samples
 {
-    [Binding]
-    sealed class SampleSteps
+    sealed class ArgumentsSteps
     {
         [Given(@"I have entered (.*) into the calculator")]
-        private void GivenIHaveEnteredIntoTheCalculator(int p0)
+        private void GivenIHaveEnteredIntoTheCalculator(int number)
         {
             ScenarioContext.Current.Pending();
         }
-        
+
         [When(@"I press add")]
         private void WhenIPressAdd()
         {
             ScenarioContext.Current.Pending();
         }
-        
+
         [Then(@"the result should be (.*) on the screen")]
-        private void ThenTheResultShouldBeOnTheScreen(int p0)
+        private void ThenTheResultShouldBeOnTheScreen(int total)
         {
             ScenarioContext.Current.Pending();
         }
+
     }
 }

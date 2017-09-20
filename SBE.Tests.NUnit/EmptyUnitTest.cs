@@ -1,13 +1,14 @@
 ﻿using NUnit.Framework;
 
-namespace SBE.Tests.NUnit
+namespace SBE._NUnit.Tests
 {
     [TestFixture]
-    sealed class EmptyUnitTest
+    public class EmptyUnitTest
     {
         [Test]
-        public void DoIt()
+        public void DoNothing()
         {
+
         }
     }
 }
