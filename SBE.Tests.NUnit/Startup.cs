@@ -12,21 +12,30 @@ namespace SBE._NUnit.Tests
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            SBEConfiguration.SourcePath = GetSourcePath();
+            SbeConfiguration.SourcePath = GetSourcePath();
         }
 
         private static string GetSourcePath()
         {
-            var path = Environment.GetEnvironmentVariable("BUILD_SOURCESDIRECTORY");
-
-            if (string.IsNullOrEmpty(path))
-            { 
-                var binFolder = Path.GetDirectoryName(typeof(Startup).Assembly.CodeBase.Substring(8));
-                var parts = binFolder.Split('\\');
-                path =  string.Concat(parts[0], "\\", Path.Combine(parts.Take(parts.Length - 3).Skip(1).ToArray()));
+            var outputDirectoryPathBuildResult = Environment.GetEnvironmentVariable("BUILD_SOURCESDIRECTORY");
+            if (string.IsNullOrEmpty(outputDirectoryPathBuildResult))
+            {
+                var uriCurrentExecutingAssembly = System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase;
+                var absolutePathCurrentExecutingAssembly =
+                    Path.GetDirectoryName(new Uri(uriCurrentExecutingAssembly).AbsolutePath);
+                outputDirectoryPathBuildResult = GetPathParentDirectory(absolutePathCurrentExecutingAssembly, 3);
             }
 
-            return path;
+            return outputDirectoryPathBuildResult;
+        }
+
+        private static string GetPathParentDirectory(string inputDirectoryPath, int hirerachyLevels)
+        {
+            var rootDirectoryPath = inputDirectoryPath;
+            for (var index = 0; index < hirerachyLevels; index++)
+                rootDirectoryPath = Path.GetDirectoryName(rootDirectoryPath);
+
+            return rootDirectoryPath;
         }
     }
 }

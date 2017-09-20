@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace SBE.Core.OutputGenerators
 {
-    static class JsonSummaryGenerator
+    class JsonSummaryGenerator:IGenerator
     {
-        internal static void Generate(FeatureSortingService sortedFeatures)
+        public void Generate(FeatureSortingService sortedFeatures)
         {
             var assemblies = sortedFeatures.GetAssemblies();
             foreach (var assembly in assemblies)
@@ -26,5 +26,6 @@ namespace SBE.Core.OutputGenerators
                 File.WriteAllText(file, json);
             }
         }
-    }
+
+     }
 }

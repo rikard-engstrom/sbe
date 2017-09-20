@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace SBE.Core.OutputGenerators
 {
-    sealed class XmlDetailGenerator
+    sealed class XmlDetailGenerator:IGenerator
     {
         private string assembly;
 
@@ -16,7 +16,12 @@ namespace SBE.Core.OutputGenerators
             XmlHelper = new XmlHelper(FileHelper.GetOutputFileName("details", "xml", assembly));
         }
 
-        internal static void Generate(FeatureSortingService sortingService)
+        public XmlDetailGenerator()
+        {
+            
+        }
+        
+        public void Generate(FeatureSortingService sortingService)
         {
             var assemblies = sortingService.GetAssemblies();
             foreach (var assembly in assemblies)

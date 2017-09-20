@@ -7,7 +7,7 @@ using SBE.Core.Services;
 
 namespace SBE.Core.OutputGenerators
 {
-    internal class XmlSummaryGenerator
+    internal class XmlSummaryGenerator:IGenerator
     {
         private static Func<string, XmlWriter> writerFactory;
         private XmlWriter writer;
@@ -23,12 +23,12 @@ namespace SBE.Core.OutputGenerators
 
             writerFactory = (assembly) =>
             {
-                var wr = XmlWriter.Create($"{SBEConfiguration.SourcePath}\\{assembly}.summary.sbe.xml", writerSettings);
+                var wr = XmlWriter.Create($"{SbeConfiguration.SourcePath}\\{assembly}.summary.sbe.xml", writerSettings);
                 return wr;
             };
         }
 
-        internal static void Generate(FeatureSortingService sortedFeatures)
+        public void Generate(FeatureSortingService sortedFeatures)
         {
             //var assemblies = sortedFeatures.GetAssemblies();
             //foreach (var assembly in assemblies)

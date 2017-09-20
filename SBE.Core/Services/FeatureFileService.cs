@@ -15,7 +15,7 @@ namespace SBE.Core.Services
 
         internal static void SetFeatureTexts(SbeFeature[] features)
         {
-            var featureFiles = Directory.GetFiles(SBEConfiguration.SourcePath, "*.feature", SearchOption.AllDirectories);
+            var featureFiles = Directory.GetFiles(SbeConfiguration.SourcePath, "*.feature", SearchOption.AllDirectories);
             var parsedFeatures = featureFiles.Select(ParseFeatureFile).ToDictionary(key => key.Title);
 
             foreach (var feature in features)

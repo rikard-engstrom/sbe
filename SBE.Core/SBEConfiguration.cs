@@ -1,6 +1,6 @@
 ﻿namespace SBE.Core
 {
-    public static class SBEConfiguration
+    public static class SbeConfiguration
     {
         public static string SourcePath { get; set; }
     }

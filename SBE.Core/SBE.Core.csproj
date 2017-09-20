@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OutputGenerators\FileHelper.cs" />
+    <Compile Include="OutputGenerators\IGenerator.cs" />
     <Compile Include="OutputGenerators\XmlHelper.cs" />
     <Compile Include="Models\SbeFeature.cs" />
     <Compile Include="Models\SbeScenario.cs" />

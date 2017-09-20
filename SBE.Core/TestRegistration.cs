@@ -26,9 +26,9 @@ namespace SBE.Core
             FeatureFileService.SetFeatureTexts(FeatureService.GetAllFeatures());
             var sortingService = new FeatureSortingService(FeatureService.GetAllFeatures());
 
-            XmlSummaryGenerator.Generate(sortingService);
-            XmlDetailGenerator.Generate(sortingService);
-            JsonSummaryGenerator.Generate(sortingService);
+            new XmlSummaryGenerator().Generate(sortingService);
+            new XmlDetailGenerator().Generate(sortingService);
+            new JsonSummaryGenerator().Generate(sortingService);
         }
     }
 }
