@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SBE.Core.Services
 {
-    internal static class FeatureFileService
+    internal class FeatureFileService
     {
         sealed class ParsedFeature
         {
@@ -13,7 +13,7 @@ namespace SBE.Core.Services
             public string Content { get; internal set; }
         }
 
-        internal static void SetFeatureTexts(SbeFeature[] features)
+        internal void SetFeatureTexts(SbeFeature[] features)
         {
             var featureFiles = Directory.GetFiles(SbeConfiguration.SourcePath, "*.feature", SearchOption.AllDirectories);
             var parsedFeatures = featureFiles.Select(ParseFeatureFile).ToDictionary(key => key.Title);

@@ -5,21 +5,21 @@ namespace SBE.Core.Services
 {
     sealed class FeatureSortingService
     {
-        private SbeFeature[] features;
-        private string[] assemblies;
+        private readonly SbeFeature[] _features;
+        private readonly string[] _assemblies;
 
         internal FeatureSortingService(SbeFeature[] features)
         {
             //var epics = features.SelectMany(x => x.Tags).Where(tag => tag.StartsWith("epic:")).Distinct().ToArray();
-            assemblies = features.Select(x => x.AssemblyName).Distinct().OrderBy(x => x).ToArray();
-            this.features = features;
+            _assemblies = features.Select(x => x.AssemblyName).Distinct().OrderBy(x => x).ToArray();
+            this._features = features;
         }
 
-        internal string[] GetAssemblies() => assemblies;
+        internal string[] GetAssemblies() => _assemblies;
 
         internal SbeFeature[] GetFeatures(string assembly)
         {
-            return features.Where(x => x.AssemblyName == assembly)
+            return _features.Where(x => x.AssemblyName == assembly)
                             .OrderBy(x=>x.Title)
                             .ToArray();
         }

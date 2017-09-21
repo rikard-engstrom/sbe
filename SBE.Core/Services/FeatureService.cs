@@ -5,17 +5,17 @@ using TechTalk.SpecFlow;
 
 namespace SBE.Core.Services
 {
-    static class FeatureService
+    public class FeatureService
     {
         static readonly Dictionary<string, SbeFeature> Features = new Dictionary<string, SbeFeature>();
 
-        internal static void RegisterScenario(SbeScenario scenario)
+        public void RegisterScenario(SbeScenario scenario)
         {
             var feature = GetCurrentFeature(scenario.AssemblyName);
             feature.Scenarios.Add(scenario);
         }
 
-        private static SbeFeature GetCurrentFeature(string assemblyName)
+        private SbeFeature GetCurrentFeature(string assemblyName)
         {
             string key = string.Concat(assemblyName, "#", FeatureContext.Current.FeatureInfo.Title);
 
@@ -33,7 +33,7 @@ namespace SBE.Core.Services
             return feature;
         }
 
-        internal static SbeFeature[] GetAllFeatures()
+        internal SbeFeature[] GetAllFeatures()
         {
             return Features.Values.ToArray();
         }

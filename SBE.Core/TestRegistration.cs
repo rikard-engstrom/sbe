@@ -18,13 +18,19 @@ namespace SBE.Core
         public static void TestOutcome(ITestOutcomeEvent e)
         {
             var scenario = ScenarioService.GetScenario(e);
-            FeatureService.RegisterScenario(scenario);
+
+            var featureService = new FeatureService();
+            featureService.RegisterScenario(scenario);
         }
 
         public static void AfterTestRun()
         {
-            FeatureFileService.SetFeatureTexts(FeatureService.GetAllFeatures());
-            var sortingService = new FeatureSortingService(FeatureService.GetAllFeatures());
+            var featureFileService = new FeatureFileService();
+
+            var feattureSerivce = new FeatureService();
+
+            featureFileService.SetFeatureTexts(feattureSerivce.GetAllFeatures());
+            var sortingService = new FeatureSortingService(feattureSerivce.GetAllFeatures());
 
             new XmlSummaryGenerator().Generate(sortingService);
             new XmlDetailGenerator().Generate(sortingService);
