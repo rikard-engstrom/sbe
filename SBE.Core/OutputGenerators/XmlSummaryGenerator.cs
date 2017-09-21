@@ -1,9 +1,9 @@
-﻿using System;
+﻿using SBE.Core.Models;
+using SBE.Core.Services;
+using System;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using SBE.Core.Models;
-using SBE.Core.Services;
 
 namespace SBE.Core.OutputGenerators
 {

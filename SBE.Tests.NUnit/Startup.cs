@@ -1,13 +1,13 @@
-﻿using NUnit.Framework;
-using SBE.Core;
-using System;
+﻿using System;
 using System.IO;
-using System.Linq;
+using System.Reflection;
+using NUnit.Framework;
+using SBE.Core;
 
 namespace SBE._NUnit.Tests
 {
     [SetUpFixture]
-    sealed class Startup
+    internal sealed class Startup
     {
         [OneTimeSetUp]
         public void OneTimeSetUp()
@@ -20,7 +20,7 @@ namespace SBE._NUnit.Tests
             var outputDirectoryPathBuildResult = Environment.GetEnvironmentVariable("BUILD_SOURCESDIRECTORY");
             if (string.IsNullOrEmpty(outputDirectoryPathBuildResult))
             {
-                var uriCurrentExecutingAssembly = System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase;
+                var uriCurrentExecutingAssembly = Assembly.GetExecutingAssembly().GetName().CodeBase;
                 var absolutePathCurrentExecutingAssembly =
                     Path.GetDirectoryName(new Uri(uriCurrentExecutingAssembly).AbsolutePath);
                 outputDirectoryPathBuildResult = GetPathParentDirectory(absolutePathCurrentExecutingAssembly, 3);

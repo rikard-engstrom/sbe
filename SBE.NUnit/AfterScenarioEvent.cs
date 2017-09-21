@@ -1,5 +1,4 @@
 ﻿using SBE.Core;
-using SBE.Core.Models;
 
 namespace SBE._NUnit
 {
