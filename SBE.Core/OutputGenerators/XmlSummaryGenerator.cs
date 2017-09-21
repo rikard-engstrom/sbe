@@ -1,9 +1,11 @@
 ﻿using SBE.Core.Models;
 using SBE.Core.Services;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using SBE.Core.Models.Interfaces;
 
 namespace SBE.Core.OutputGenerators
 {
@@ -49,7 +51,7 @@ namespace SBE.Core.OutputGenerators
             writer.WriteAttributeString("scenarioSuccessCount", feature.Scenarios.Count(x=>x.Outcome == TestOutcome.Passed).ToString());
             writer.WriteAttributeString("success", feature.Scenarios.All(x=>x.Outcome == TestOutcome.Passed).ToString());
             WriteCDataElementString("title", feature.Title);
-            WriteTags(feature.Tags);
+            WriteTags(feature.Tags.ToList());
             writer.WriteStartElement("scenarios");
 
             foreach (var scenario in feature.Scenarios)
@@ -61,7 +63,7 @@ namespace SBE.Core.OutputGenerators
             writer.WriteEndElement();
         }
 
-        private void WriteTags(string[] tags)
+        private void WriteTags(List<string> tags)
         {
             if (tags?.Any() ?? false)
             {

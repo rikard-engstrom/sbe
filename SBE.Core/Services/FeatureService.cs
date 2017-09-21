@@ -24,7 +24,7 @@ namespace SBE.Core.Services
                 feature = new SbeFeature
                 {
                     Title = FeatureContext.Current.FeatureInfo.Title,
-                    Tags = FeatureContext.Current.FeatureInfo.Tags,
+                    Tags = FeatureContext.Current.FeatureInfo.Tags.ToList(),
                     AssemblyName = assemblyName,
                 };
                 Features.Add(key, feature);

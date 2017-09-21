@@ -1,4 +1,5 @@
-﻿using SBE.Core.Models;
+﻿using System.Linq;
+using SBE.Core.Models;
 using TechTalk.SpecFlow;
 
 namespace SBE.Core.Services
@@ -12,10 +13,10 @@ namespace SBE.Core.Services
             return new SbeScenario
             {
                 Title = ScenarioContext.Current.ScenarioInfo.Title,
-                Tags = ScenarioContext.Current.ScenarioInfo.Tags,
+                Tags = ScenarioContext.Current.ScenarioInfo.Tags.ToList(),
                 Outcome = e.Outcome,
                 AssemblyName = testReflection.AssemblyName,
-                NamedArgumets = testReflection.NamedArgumets
+                NamedArguments = testReflection.NamedArgumets
             };
         }
     }

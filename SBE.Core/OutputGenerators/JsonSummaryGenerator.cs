@@ -2,12 +2,14 @@
 using SBE.Core.Services;
 using System.IO;
 using System.Linq;
+using SBE.Core.Models;
+using SBE.Core.Models.Interfaces;
 
 namespace SBE.Core.OutputGenerators
 {
-    class JsonSummaryGenerator:IGenerator
+    class JsonSummaryGenerator:Generator
     {
-        public void Generate(FeatureSortingService sortedFeatures)
+        public override void Generate(FeatureSortingService sortedFeatures)
         {
             var assemblies = sortedFeatures.GetAssemblies();
             foreach (var assembly in assemblies)
@@ -22,7 +24,7 @@ namespace SBE.Core.OutputGenerators
                                     });
 
                 var json = JsonConvert.SerializeObject(features, Formatting.Indented);
-                var file = FileHelper.GetOutputFileName("summary", "json", assembly);
+                var file = GetOutputFileName("summary", "json", assembly);
                 File.WriteAllText(file, json);
             }
         }

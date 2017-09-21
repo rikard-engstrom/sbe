@@ -1,76 +1,67 @@
-﻿using System.Diagnostics;
-using Newtonsoft.Json;
-using SBE.Core.Services;
-using System.IO;
+﻿using System;
 using System.Linq;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
+using SBE.Core.Models;
+using SBE.Core.Models.Interfaces;
+using SBE.Core.Services;
 
 namespace SBE.Core.OutputGenerators
 {
-    class PdfSummaryGenerator:IGenerator
+    internal class PdfSummaryGenerator : Generator
     {
-        public void Generate(FeatureSortingService sortedFeatures)
+        public override void Generate(FeatureSortingService sortedFeatures)
         {
-            
             var assemblies = sortedFeatures.GetAssemblies();
             foreach (var assembly in assemblies)
             {
-
-                // Create a new PDF document
-                PdfDocument document = new PdfDocument();
-
-                // Create an empty page
-                PdfPage page = document.AddPage();
-
-                // Get an XGraphics object for drawing
-                XGraphics gfx = XGraphics.FromPdfPage(page);
-
-                // Create a font
-                XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
-
-                // Draw the text
-                gfx.DrawString("Hello, World!", font, XBrushes.Black,
-                    new XRect(0, 0, page.Width, page.Height),
-                    XStringFormat.Center);
-
-                // Save the document...
-
-                var fileName = FileHelper.GetOutputFileName($"summary", $"PDF", assembly);
-
-                fileName = fileName + "Hello world.pdf";
-                document.Save(fileName);
-                // ...and start a viewer.
-
-
-                var file = FileHelper.GetOutputFileName($"summary", $"PDF", assembly);
-
-                Process.Start(file);
-
-
-                /*
-
-
+                var counter = 30;
 
                 var features = sortedFeatures.GetFeatures(assembly)
-                                    .Select(x => new
-                                    {
-                                        x.Title,
-                                        x.Tags,
-                                        Success = x.Success(),
-                                        Scenarios = x.Scenarios.Select(s => new { s.Title, Success = s.Success(), Outcome =  s.Outcome.ToString(), s.Tags })
-                                    });
+                    .Select(x => new
+                    {
+                        x.Title,
+                        x.Tags,
+                        Success = x.Success(),
+                        Scenarios = x.Scenarios.Select(s =>
+                            new {s.Title, Success = s.Success(), Outcome = s.Outcome.ToString(), s.Tags})
+                    });
 
-                var json = JsonConvert.SerializeObject(features, Formatting.Indented);
-                var file = FileHelper.GetOutputFileName($"summary", $"json", assembly);
+                var document = new PdfDocument();
 
-                 
-  
-                File.WriteAllText(file, json);  */
+                var font = new XFont("Verdana", 20, XFontStyle.Bold);
+
+                features.ToList().ForEach(obj =>
+                {
+                    counter = counter + 20;
+                    var page = document.AddPage();
+                    var xGraphics = XGraphics.FromPdfPage(page);
+
+                    WriteTitle(xGraphics, page, obj.Title);
+                });
+
+                var fileName = GetOutputFileName($"summary", $"PDF", assembly);
+
+                fileName = $"{fileName} {DateTime.Now:yyyyMMddHHmmss}.pdf";
+                document.Save(fileName);
             }
-
-
+        }
+        
+        private void WriteTitle(XGraphics xGraphics, PdfPage page, string title)
+        {
+            xGraphics.DrawString(title, GetTitleFont(), XBrushes.Black,
+                new XRect(0, 0, page.Width, page.Height),
+                XStringFormats.Center);
         }
 
-     }
+        private XFont GetTitleFont()
+        {
+            return GetFont(30);
+        }
+
+        private static XFont GetFont(int size)
+        {
+            return new XFont("Verdana", size, XFontStyle.Bold);
+        }
+    }
 }

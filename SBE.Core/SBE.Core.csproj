@@ -56,8 +56,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OutputGenerators\FileHelper.cs" />
-    <Compile Include="OutputGenerators\IGenerator.cs" />
+    <Compile Include="Models\Generator.cs" />
+    <Compile Include="Models\Interfaces\IGenerator.cs" />
     <Compile Include="OutputGenerators\PdfSummaryGenerator.cs" />
     <Compile Include="OutputGenerators\XmlHelper.cs" />
     <Compile Include="Models\SbeFeature.cs" />

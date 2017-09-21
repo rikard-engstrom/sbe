@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SBE.Core.Models.Interfaces;
+using SBE.Core.Services;
+
+namespace SBE.Core.Models
+{
+    abstract class Generator : IGenerator
+    {
+        public abstract void Generate(FeatureSortingService sortedFeatures);
+
+        public string GetOutputFileName(string name, string extension, string assembly)
+        {
+            return $"{SbeConfiguration.SourcePath}\\{assembly}.{name}.sbe.{extension}";
+        }
+    }
+    
+}
+
+

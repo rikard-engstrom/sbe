@@ -1,6 +1,6 @@
 ﻿using SBE.Core.Services;
 
-namespace SBE.Core.OutputGenerators
+namespace SBE.Core.Models.Interfaces
 {
     interface IGenerator
     {
