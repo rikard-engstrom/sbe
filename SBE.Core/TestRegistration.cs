@@ -35,6 +35,7 @@ namespace SBE.Core
             new XmlSummaryGenerator().Generate(sortingService);
             new XmlDetailGenerator().Generate(sortingService);
             new JsonSummaryGenerator().Generate(sortingService);
+            new PdfSummaryGenerator().Generate(sortingService);
         }
     }
 }
