@@ -1,4 +1,5 @@
-﻿using Gherkin;
+﻿using System.Collections.Generic;
+using Gherkin;
 using SBE.Core.Models;
 using System.IO;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace SBE.Core.Services
             public string Content { get; internal set; }
         }
 
-        internal void SetFeatureTexts(SbeFeature[] features)
+        internal void SetFeatureTexts(List<SbeFeature> features)
         {
             var featureFiles = Directory.GetFiles(SbeConfiguration.SourcePath, "*.feature", SearchOption.AllDirectories);
             var parsedFeatures = featureFiles.Select(ParseFeatureFile).ToDictionary(key => key.Title);

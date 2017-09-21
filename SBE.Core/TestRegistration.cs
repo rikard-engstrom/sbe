@@ -27,10 +27,10 @@ namespace SBE.Core
         {
             var featureFileService = new FeatureFileService();
 
-            var feattureSerivce = new FeatureService();
+            var featureService = new FeatureService();
 
-            featureFileService.SetFeatureTexts(feattureSerivce.GetAllFeatures());
-            var sortingService = new FeatureSortingService(feattureSerivce.GetAllFeatures());
+            featureFileService.SetFeatureTexts(featureService.GetAllFeatures());
+            var sortingService = new FeatureSortingService(featureService.GetAllFeatures());
 
             new XmlSummaryGenerator().Generate(sortingService);
             new XmlDetailGenerator().Generate(sortingService);

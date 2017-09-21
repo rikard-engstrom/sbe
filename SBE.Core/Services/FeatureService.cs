@@ -33,9 +33,9 @@ namespace SBE.Core.Services
             return feature;
         }
 
-        internal SbeFeature[] GetAllFeatures()
+        internal List<SbeFeature> GetAllFeatures()
         {
-            return Features.Values.ToArray();
+            return Features.Values.ToList();
         }
     }
 }

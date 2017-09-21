@@ -1,4 +1,5 @@
-﻿using SBE.Core.Models;
+﻿using System.Collections.Generic;
+using SBE.Core.Models;
 using SBE.Core.Services;
 using System.Linq;
 
@@ -32,16 +33,12 @@ namespace SBE.Core.OutputGenerators
             }
         }
 
-        private void GenerateOutput(SbeFeature[] features)
+        private void GenerateOutput(List<SbeFeature> features)
         {
             XmlHelper.StartDocument();
             XmlHelper.StartElement("features");
-
-            foreach(var feature in features)
-            {
-                WriteFeature(feature);
-            }
-
+            
+            features.ForEach(WriteFeature);
             XmlHelper.EndDocument();
         }
 
@@ -58,6 +55,7 @@ namespace SBE.Core.OutputGenerators
             WriteTags(feature.Tags);
             XmlHelper.StartElement("scenarios");
 
+            
             foreach (var scenario in feature.Scenarios)
             {
                 WriteScenario(scenario);
