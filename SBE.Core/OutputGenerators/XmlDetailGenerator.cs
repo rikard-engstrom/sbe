@@ -12,15 +12,15 @@ namespace SBE.Core.OutputGenerators
 
         public XmlHelper XmlHelper { get; }
 
-        private XmlDetailGenerator(string assembly)
+        private XmlDetailGenerator(string assembly): base("XML", "Detail")
         {
             this._assembly = assembly;
-            XmlHelper = new XmlHelper( GetOutputFileName("details", "xml", assembly));
+            XmlHelper = new XmlHelper( GetOutputFileName(base.ReportType, base.ReportFormat, assembly));
         }
 
-        public XmlDetailGenerator()
+        public XmlDetailGenerator() : base("XML", "Detail")
         {
-            
+
         }
         
         public override void Generate(FeatureSortingService sortingService)

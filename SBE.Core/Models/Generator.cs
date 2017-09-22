@@ -10,6 +10,16 @@ namespace SBE.Core.Models
 {
     abstract class Generator : IGenerator
     {
+        public String ReportFormat { get; private set; }
+        public String ReportType { get; private set; }
+
+
+        protected Generator(String reportFormat, String reportType)
+        {
+            ReportFormat = reportFormat;
+            ReportType = ReportType;
+        }
+
         public abstract void Generate(FeatureSortingService sortedFeatures);
 
         public string GetOutputFileName(string name, string extension, string assembly)
@@ -17,7 +27,4 @@ namespace SBE.Core.Models
             return $"{SbeConfiguration.SourcePath}\\{assembly}.{name}.sbe.{extension}";
         }
     }
-    
 }
-
-

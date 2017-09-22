@@ -10,6 +10,15 @@ namespace SBE.Core.OutputGenerators
 {
     internal class PdfSummaryGenerator : Generator
     {
+
+
+        public PdfSummaryGenerator() : base("PDF", "Summary")
+        {
+
+        }
+
+
+
         public override void Generate(FeatureSortingService sortedFeatures)
         {
             var assemblies = sortedFeatures.GetAssemblies();
@@ -63,5 +72,7 @@ namespace SBE.Core.OutputGenerators
         {
             return new XFont("Verdana", size, XFontStyle.Bold);
         }
+
+
     }
 }
